@@ -3,11 +3,16 @@ import ProjectSummary from './ProjectSummary'
 
 class ProjectList extends Component {
     render() {
+        const {projects} = this.props
         return (
             <div className="project-list section"> 
-                <ProjectSummary/>
-                <ProjectSummary/>
-                <ProjectSummary/>
+                {
+                    projects && projects.map(
+                        project=>{
+                           return <ProjectSummary project={project} key={project.id} />
+                        }
+                    )
+                }
             </div>
         )
     }
