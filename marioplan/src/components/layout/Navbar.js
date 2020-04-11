@@ -17,9 +17,9 @@ const Navbar = (props)=>{
     )
 }
 const mapStateToProps = (state)=>{
-    console.log(state)
     return {
         auth : state.firebase.auth
+        
     }
 }
-export default connect(mapStateToProps)(Navbar) 
+export default  connect(mapStateToProps)(Navbar) 

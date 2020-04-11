@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css'
 import rootReducer from './store/reducers/rootReducer'
-
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
@@ -14,13 +13,15 @@ import fbConfig from './config/fbConfig'
 const store = createStore(rootReducer,
   compose(
     applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
+    reduxFirestore(fbConfig), // redux bindings for firestore,
     reactReduxFirebase(fbConfig,{
-      attachAuthIsReady: true
-    }), // redux binding for firebase
-    reduxFirestore(fbConfig) // redux bindings for firestore
+      attachAuthIsReady: true ,
+      useFirestoreForProfile: true,
+      userProfile: 'users'
+    }) // redux binding for firebase
+    
   )
 );
-console.log(store)
 store.firebaseAuthIsReady.then(
   () => {
 
@@ -35,4 +36,5 @@ store.firebaseAuthIsReady.then(
    );
   }
 )
+
 

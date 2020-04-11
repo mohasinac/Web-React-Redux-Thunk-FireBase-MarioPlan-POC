@@ -11,7 +11,7 @@ const rootReducer = combineReducers(
         auth : authReducer,
         project : projectReducer,
         firebase : firebaseReducer,
-        fireStore : firestoreReducer
+        firestore : firestoreReducer
     }
 )
 
