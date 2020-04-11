@@ -3,10 +3,15 @@ import projectReducer from './projectReducer'
 
 import {combineReducers} from 'redux'
 
+import {firebaseReducer} from 'react-redux-firebase'
+import {firestoreReducer} from'redux-firestore'
+
 const rootReducer = combineReducers(
     {
         auth : authReducer,
-        project : projectReducer
+        project : projectReducer,
+        firebase : firebaseReducer,
+        fireStore : firestoreReducer
     }
 )
 
